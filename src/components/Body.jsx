@@ -1,6 +1,6 @@
 const Body = () => {
     return (
-        <div className="ml-72 pb-10">
+        <div className="flex justify-center pb-10">
             <div className="flex flex-col self-center px-5 mt-16 max-w-full w-[1100px] max-md:mt-10">
       <div className="text-3xl font-semibold leading-[48.44px] text-neutral-700 max-md:max-w-full">
         Welcome to DBRAU, Central Library

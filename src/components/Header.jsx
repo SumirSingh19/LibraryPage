@@ -35,7 +35,7 @@ const Header = () => {
             </div>
             <div className="flex flex-col gap-2">
                 <div className="text-white">
-                    <ul className="flex gap-20">
+                    <ul className="flex gap-28">
                         <li className="relative flex items-center">
                             <span>Library Profile</span>
                             <img
@@ -139,7 +139,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="text-white pl-10">
-                    <ul className="flex gap-20">
+                    <ul className="flex gap-28">
                         <li className="cursor-pointer">Downloads</li>
                         <li className="cursor-pointer">Gallery</li>
                         <li className="cursor-pointer">Other Links</li>
