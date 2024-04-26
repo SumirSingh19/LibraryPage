@@ -127,7 +127,7 @@ const Body = () => {
               <div className="text-zinc-800 max-md:max-w-full">
                 Library Timings
               </div>
-              <div className="mx-14 mt-7 text-base leading-7 max-md:mr-2.5 max-md:max-w-full">
+              <div className="mt-7 text-base leading-7 max-md:mr-2.5 max-md:max-w-full">
                 Library is open from 10:00 AM to 5:00 PM Night from Monday to
                 Saturday. On Second
                 <br />
