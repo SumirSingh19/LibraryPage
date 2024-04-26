@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import ARROW from "../assets/icons/arrow-down.png";
 
 const Header = () => {
@@ -8,34 +8,19 @@ const Header = () => {
         eResources: false,
         eventsActivities: false,
     });
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const timeoutRef = useRef(null);
 
-    const handleMouseEnter = () => {
-        setIsDropdownOpen(true);
-        clearTimeout(timeoutRef.current);
-    };
-
-    const handleMouseLeave = () => {
-        timeoutRef.current = setTimeout(() => {
-            setIsDropdownOpen(false);
-        }, 200);
-    };
-
-    const handleDropdownMouseEnter = () => {
-        clearTimeout(timeoutRef.current);
-    };
-
-    const handleDropdownMouseLeave = () => {
-        timeoutRef.current = setTimeout(() => {
-            setIsDropdownOpen(false);
-        }, 200);
-    };
-
+    // Function to toggle dropdown visibility
     const toggleDropdown = (dropdown) => {
-        setDropdowns((prevDropdowns) => ({
-            ...prevDropdowns,
-            [dropdown]: !prevDropdowns[dropdown],
+        setDropdowns(prevState => ({
+            ...prevState,
+            [dropdown]: !prevState[dropdown]
+        }));
+    };
+
+    const closeDropdowns = (dropdown) => {
+        setDropdowns(prevState => ({
+            ...prevState,
+            [dropdown]: false
         }));
     };
 
@@ -56,7 +41,9 @@ const Header = () => {
                             <img
                                 src={ARROW}
                                 className="w-3 h-3 ml-1 arrow-icon cursor-pointer"
-                                onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}
+                                onClick={() => {
+                                    toggleDropdown('libraryProfile');
+                                }}
                             />
                             {dropdowns.libraryProfile && (
                                 <div className="dropdown-menu">
@@ -80,7 +67,9 @@ const Header = () => {
                             <img
                                 src={ARROW}
                                 className="w-3 h-3 ml-1 arrow-icon cursor-pointer"
-                                onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}
+                                onClick={() => {
+                                    toggleDropdown('libraryServices');
+                                }}
                             />
                             {dropdowns.libraryServices && (
                                 <div className="dropdown-menu">
@@ -101,7 +90,9 @@ const Header = () => {
                             <img
                                 src={ARROW}
                                 className="w-3 h-3 ml-1 arrow-icon cursor-pointer"
-                                onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}
+                                onClick={() => {
+                                    toggleDropdown('eResources');
+                                }}
                             />
                             {dropdowns.eResources && (
                                 <div className="dropdown-menu">
@@ -121,11 +112,16 @@ const Header = () => {
                             )}
                         </li>
                         <li className="relative flex items-center">
-                            <span>Events and Activities</span>
+                            <span onClick={() => {
+                                toggleDropdown('eventsActivities');
+                            }}>Events and Activities</span>
                             <img
                                 src={ARROW}
                                 className="w-3 h-3 ml-1 arrow-icon cursor-pointer"
-                                onMouseEnter={handleDropdownMouseEnter} onMouseLeave={handleDropdownMouseLeave}
+                                onClick={() => {
+                                    toggleDropdown('eventsActivities');
+                                    closeDropdowns('eventsActivities');
+                                }}
                             />
                             {dropdowns.eventsActivities && (
                                 <div className="dropdown-menu">
